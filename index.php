@@ -2,8 +2,8 @@
 
 define('ROOT', '/');
 
-include_once('m/functions.php');
-include_once('m/system.php');
+include_once('models/functions.php');
+include_once('models/system.php');
 
 
 
@@ -25,7 +25,7 @@ $err404 = false;
 $controller = trim(strip_tags($params[0] ?? 'home'));
 
 
-if(!file_exists("c/{$controller}.php")){
+if(!file_exists("controllers/{$controller}.php")){
 	$err404 = true;
 	
 }else if(!preg_match("/^[a-z0-9_]+$/", $controller)){
@@ -35,7 +35,7 @@ if(!file_exists("c/{$controller}.php")){
 	$err404 = true;
 	
 }else{	
-	include_once("c/$controller.php");
+	include_once("controllers/$controller.php");
 }
 
 
